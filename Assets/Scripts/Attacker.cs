@@ -32,6 +32,8 @@ public class Attacker : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (gameObject.layer == collision.gameObject.layer) return;
+
         Health target = collision.GetComponent<Health>();
         if (target == null) return;
 

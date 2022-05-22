@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GhostController : MonoBehaviour
 {
+    [SerializeField] string playerArmyLayer = "PlayerArmy";
     GameObject target;
     bool isPossessing = false;
 
@@ -38,6 +39,7 @@ public class GhostController : MonoBehaviour
                 target = hit.collider.gameObject;
                 target.GetComponent<EnemyController>().enabled = false;
                 target.GetComponent<PlayerController>().enabled = true;
+                target.gameObject.layer = LayerMask.NameToLayer(playerArmyLayer);
 
                 isPossessing = true;
             }
