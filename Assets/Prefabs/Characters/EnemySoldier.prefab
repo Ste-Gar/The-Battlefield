@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4795230090871873983}
   - component: {fileID: 6384554374429916830}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: EnemySoldier
   m_TagString: Fighter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,9 +145,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6714feef3d2e5db489a01b0d953a8b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseRange: 3
   chaseSpeed: 0.5
   attackRange: 0.5
+  opposingArmyLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!50 &4795230090871873982
 Rigidbody2D:
   serializedVersion: 4

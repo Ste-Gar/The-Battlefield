@@ -37,7 +37,7 @@ public class GhostController : MonoBehaviour
             if(hit.collider.tag == "Fighter")
             {
                 target = hit.collider.gameObject;
-                target.GetComponent<EnemyController>().enabled = false;
+                target.GetComponent<SoldierController>().enabled = false;
                 target.GetComponent<PlayerController>().enabled = true;
                 target.gameObject.layer = LayerMask.NameToLayer(playerArmyLayer);
 
