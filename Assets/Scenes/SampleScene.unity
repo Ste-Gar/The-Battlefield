@@ -1100,7 +1100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adec02c6ee9ea2849a7f2ceac0a9bdc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerArmyLayer: PlayerArmy
+  playerArmyTag: Friendly
+  enemyArmyTag: Enemy
 --- !u!212 &1012284397
 SpriteRenderer:
   m_ObjectHideFlags: 0

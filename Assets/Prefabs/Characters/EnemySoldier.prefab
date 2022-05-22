@@ -147,12 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseSpeed: 0.5
   attackRange: 0.5
-  opposingArmyLayer:
-    serializedVersion: 2
-    m_Bits: 64
   opponentTag: Friendly
-  circleCastRadius: 5
-  circleCastDistance: 5
+  findTargetDelay: 0.2
 --- !u!50 &4795230090871873982
 Rigidbody2D:
   serializedVersion: 4

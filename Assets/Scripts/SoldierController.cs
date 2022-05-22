@@ -11,9 +11,10 @@ public class SoldierController : MonoBehaviour
 
     [Header("Find Target Parameters")]
     //[SerializeField] LayerMask opposingArmyLayer;
+    //[SerializeField] float circleCastRadius = 5;
+    //[SerializeField] float circleCastDistance = 5;
     [SerializeField] string opponentTag;
-    [SerializeField] float circleCastRadius = 5;
-    [SerializeField] float circleCastDistance = 5;
+    [SerializeField] float findTargetDelay = 0.2f;
 
     Mover mover;
     Attacker attacker;
@@ -28,9 +29,14 @@ public class SoldierController : MonoBehaviour
         attacker = GetComponent<Attacker>();
     }
 
+    private void Start()
+    {
+        InvokeRepeating("FindNearestTarget", 0, findTargetDelay);
+    }
+
     private void Update()
     {
-        FindNearestTarget();
+        //FindNearestTarget();
         //FindTarget();
 
         movement = Vector2.zero;
