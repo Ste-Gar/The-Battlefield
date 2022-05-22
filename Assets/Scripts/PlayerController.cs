@@ -13,11 +13,19 @@ public class PlayerController : MonoBehaviour
     Vector2 mousePos;
     Vector2 movement;
 
+    public delegate void PossessedUnitDeath();
+    public static event PossessedUnitDeath OnPossessedDeath;
+
     private void Awake()
     {
         mover = GetComponent<Mover>();
         cam = Camera.main;
         attacker = GetComponent<Attacker>();
+    }
+
+    private void OnDisable()
+    {
+        OnPossessedDeath.Invoke();
     }
 
     void Update()

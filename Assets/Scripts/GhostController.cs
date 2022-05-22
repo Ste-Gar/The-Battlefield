@@ -14,6 +14,16 @@ public class GhostController : MonoBehaviour
         mainCam = Camera.main;
     }
 
+    private void OnEnable()
+    {
+        PlayerController.OnPossessedDeath += DetachFromUnit;
+    }
+
+    private void OnDisable()
+    {
+        PlayerController.OnPossessedDeath -= DetachFromUnit;
+    }
+
     private void Update()
     {
         if (isPossessing) return;
@@ -38,5 +48,10 @@ public class GhostController : MonoBehaviour
     {
         if (target == null) return;
         transform.position = target.transform.position;
+    }
+
+    private void DetachFromUnit()
+    {
+        isPossessing = false;
     }
 }
