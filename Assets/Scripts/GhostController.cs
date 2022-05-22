@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GhostController : MonoBehaviour
 {
-    [SerializeField] string playerArmyLayer = "PlayerArmy";
+    //[SerializeField] string playerArmyLayer = "PlayerArmy";
+    [SerializeField] string playerArmyTag = "Friendly";
+    [SerializeField] string enemyArmyTag = "Enemy";
     GameObject target;
     bool isPossessing = false;
 
@@ -34,12 +36,13 @@ public class GhostController : MonoBehaviour
             Vector3 worldPos = new Vector3(mousePos.x, mousePos.y, 0);
             RaycastHit2D hit = Physics2D.Raycast(mousePos, worldPos);
             if (!hit) return;
-            if(hit.collider.tag == "Fighter")
+            if(hit.collider.tag == enemyArmyTag || hit.collider.tag == playerArmyTag)
             {
                 target = hit.collider.gameObject;
                 target.GetComponent<SoldierController>().enabled = false;
                 target.GetComponent<PlayerController>().enabled = true;
-                target.gameObject.layer = LayerMask.NameToLayer(playerArmyLayer);
+                //target.gameObject.layer = LayerMask.NameToLayer(playerArmyLayer);
+                target.gameObject.tag = playerArmyTag;
 
                 isPossessing = true;
             }

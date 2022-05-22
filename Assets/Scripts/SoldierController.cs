@@ -6,12 +6,12 @@ using UnityEngine;
 [RequireComponent(typeof(Attacker))]
 public class SoldierController : MonoBehaviour
 {
-    //[SerializeField] float chaseRange = 3;
     [SerializeField] [Range(0.1f, 1)] float chaseSpeed = 0.5f;
     [SerializeField] float attackRange = 1;
 
     [Header("Find Target Parameters")]
-    [SerializeField] LayerMask opposingArmyLayer;
+    //[SerializeField] LayerMask opposingArmyLayer;
+    [SerializeField] string opponentTag;
     [SerializeField] float circleCastRadius = 5;
     [SerializeField] float circleCastDistance = 5;
 
@@ -26,22 +26,22 @@ public class SoldierController : MonoBehaviour
     {
         mover = GetComponent<Mover>();
         attacker = GetComponent<Attacker>();
-        //player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
     {
-        FindTarget();
+        FindNearestTarget();
+        //FindTarget();
 
         movement = Vector2.zero;
 
         if (target == null) return;
 
-        RaycastHit2D nearbyEnemy = Physics2D.CircleCast(transform.position, attackRange * 2, Vector2.up, 0, opposingArmyLayer);
-        if (nearbyEnemy) 
-        {
-            attacker.Attack();
-        }
+        //RaycastHit2D nearbyEnemy = Physics2D.CircleCast(transform.position, attackRange * 2, Vector2.up, 0, opposingArmyLayer);
+        //if (nearbyEnemy) 
+        //{
+        //    attacker.Attack();
+        //}
 
         float distanceToTarget = Vector2.Distance(target.transform.position, transform.position);
         if (distanceToTarget > attackRange)
@@ -62,16 +62,32 @@ public class SoldierController : MonoBehaviour
         mover.LookAt(target.position);
     }
 
-    private void FindTarget()
+    //private void FindTarget()
+    //{
+    //    if (target != null) return;
+
+    //    RaycastHit2D hit = Physics2D.CircleCast(transform.position, circleCastRadius, Vector2.up, circleCastDistance, opposingArmyLayer);
+    //    if (!hit)
+    //    {
+    //        target = null;
+    //    }
+
+    //    target = hit.transform;
+    //}
+
+    private void FindNearestTarget()
     {
-        if (target != null) return;
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(opponentTag);
+        float distance = Mathf.Infinity;
 
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position, circleCastRadius, Vector2.up, circleCastDistance, opposingArmyLayer);
-        if (!hit)
+        foreach(GameObject enemy in enemies)
         {
-            target = null;
+            float currentDistance = Vector2.Distance(transform.position, enemy.transform.position);
+            if (currentDistance < distance)
+            {
+                distance = currentDistance;
+                target = enemy.transform;
+            }
         }
-
-        target = hit.transform;
     }
 }
