@@ -150,6 +150,8 @@ MonoBehaviour:
   opposingArmyLayer:
     serializedVersion: 2
     m_Bits: 64
+  circleCastRadius: 5
+  circleCastDistance: 5
 --- !u!50 &4795230090871873982
 Rigidbody2D:
   serializedVersion: 4
@@ -170,7 +172,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &4795230090871873983
 CircleCollider2D:
   m_ObjectHideFlags: 0

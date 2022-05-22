@@ -37,6 +37,12 @@ public class SoldierController : MonoBehaviour
 
         if (target == null) return;
 
+        RaycastHit2D nearbyEnemy = Physics2D.CircleCast(transform.position, attackRange * 2, Vector2.up, 0, opposingArmyLayer);
+        if (nearbyEnemy) 
+        {
+            attacker.Attack();
+        }
+
         float distanceToTarget = Vector2.Distance(target.transform.position, transform.position);
         if (distanceToTarget > attackRange)
         {
