@@ -26,8 +26,5 @@ public class Mover : MonoBehaviour
         Vector2 lookDir = target - rb.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
         rb.SetRotation(angle);
-        //rb.rotation = angle;
-
-        //rb.SetRotation
     }
 }

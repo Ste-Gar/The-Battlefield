@@ -18,8 +18,8 @@ GameObject:
   - component: {fileID: 4795230090871873983}
   - component: {fileID: 6384554374429916830}
   m_Layer: 7
-  m_Name: Enemy
-  m_TagString: Fighter
+  m_Name: EnemySoldier
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9393e6f8269c17429a4c55cb71c8d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 30
+  moveSpeed: 20
 --- !u!114 &4795230090871873976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,9 +145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6714feef3d2e5db489a01b0d953a8b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseRange: 3
   chaseSpeed: 0.5
   attackRange: 0.5
+  opponentTag: Friendly
+  findTargetDelay: 0.2
 --- !u!50 &4795230090871873982
 Rigidbody2D:
   serializedVersion: 4
@@ -168,7 +169,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &4795230090871873983
 CircleCollider2D:
   m_ObjectHideFlags: 0
