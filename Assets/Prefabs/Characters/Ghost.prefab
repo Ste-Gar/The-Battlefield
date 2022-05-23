@@ -99,3 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   friendlyArmyTag: Friendly
   enemyArmyTag: Enemy
+  timescaleReduction: 0.1
+  pushBackRange: 5
+  pushBackPower: 1000
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 192

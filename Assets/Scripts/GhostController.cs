@@ -8,6 +8,10 @@ public class GhostController : MonoBehaviour
     [SerializeField] string enemyArmyTag = "Enemy";
     [SerializeField] [Range(0.1f, 1)] float timescaleReduction = 0.5f;
 
+    [SerializeField] float pushBackRange = 3;
+    [SerializeField] float pushBackPower = 10;
+    [SerializeField] LayerMask layerMask;
+
     GameObject target;
     bool isPossessing = false;
 
@@ -33,8 +37,6 @@ public class GhostController : MonoBehaviour
         if (isPossessing) return;
         if (Input.GetButtonDown("Fire1"))
         {
-            //Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-            //Vector3 worldPos = new Vector3(mousePos.x, 0, mousePos.z);
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
@@ -43,16 +45,39 @@ public class GhostController : MonoBehaviour
             if(hit.collider.CompareTag(enemyArmyTag) || hit.collider.CompareTag(friendlyArmyTag))
             {
                 target = hit.collider.gameObject;
-                target.GetComponent<SoldierController>().enabled = false;
-                target.GetComponent<PlayerController>().enabled = true;
-                //target.gameObject.layer = LayerMask.NameToLayer(playerArmyLayer);
-                target.tag = friendlyArmyTag;
-                target.GetComponentInChildren<Weapon>().SetEnnemyTag(enemyArmyTag);
+                TakeControl(target);
+                SwapTags(target);
+                PushBack();
 
                 isPossessing = true;
 
                 Time.timeScale = 1;
             }
+        }
+    }
+
+    private void TakeControl(GameObject target)
+    {
+        transform.position = target.transform.position;
+        target.GetComponent<SoldierController>().enabled = false;
+        target.GetComponent<PlayerController>().enabled = true;
+    }
+
+    private void SwapTags(GameObject target)
+    {
+        target.tag = friendlyArmyTag;
+        target.GetComponentInChildren<Weapon>().SetEnnemyTag(enemyArmyTag);
+    }
+
+    private void PushBack()
+    {
+        Collider[] targets = Physics.OverlapSphere(transform.position, pushBackRange, layerMask);
+
+        foreach(Collider target in targets)
+        {
+            Rigidbody rb = target.GetComponent<Rigidbody>();
+
+            rb.AddExplosionForce(pushBackPower, transform.position, pushBackRange);
         }
     }
 
