@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 20
+  rotationSpeed: 10
 --- !u!114 &8852554403961501381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6714feef3d2e5db489a01b0d953a8b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseSpeed: 0.8
+  chaseSpeed: 0.5
   attackRange: 1.5
   opponentTag: 
   findTargetDelay: 0.2

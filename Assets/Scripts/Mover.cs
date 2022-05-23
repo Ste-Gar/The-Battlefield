@@ -6,6 +6,7 @@ using UnityEngine;
 public class Mover : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 10;
+    [SerializeField] float rotationSpeed = 10;
 
     Rigidbody rb;
 
@@ -23,9 +24,9 @@ public class Mover : MonoBehaviour
 
     public void LookAt(Vector3 target)
     {
-        //Vector3 lookDir = target - rb.position;
-        //float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
-        //rb.SetRotation(angle);
-        transform.LookAt(target);
+        Vector3 lookDirection = target - transform.position;
+        lookDirection.y = 0;
+        Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
+        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
     }
 }

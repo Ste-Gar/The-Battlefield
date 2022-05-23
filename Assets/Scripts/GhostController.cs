@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class GhostController : MonoBehaviour
 {
-    //[SerializeField] string playerArmyLayer = "PlayerArmy";
     [SerializeField] string friendlyArmyTag = "Friendly";
     [SerializeField] string enemyArmyTag = "Enemy";
+    [SerializeField] [Range(0.1f, 1)] float timescaleReduction = 0.5f;
+
     GameObject target;
     bool isPossessing = false;
 
@@ -46,8 +47,11 @@ public class GhostController : MonoBehaviour
                 target.GetComponent<PlayerController>().enabled = true;
                 //target.gameObject.layer = LayerMask.NameToLayer(playerArmyLayer);
                 target.tag = friendlyArmyTag;
+                target.GetComponentInChildren<Weapon>().SetEnnemyTag(enemyArmyTag);
 
                 isPossessing = true;
+
+                Time.timeScale = 1;
             }
         }
     }
@@ -61,5 +65,6 @@ public class GhostController : MonoBehaviour
     private void DetachFromUnit()
     {
         isPossessing = false;
+        Time.timeScale = timescaleReduction;
     }
 }
