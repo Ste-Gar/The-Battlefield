@@ -17,8 +17,7 @@ public class Mover : MonoBehaviour
 
     public void Move(Vector3 movement)
     {
-        rb.AddForce(movement * moveSpeed, ForceMode.Force); //this has some drag and inertia. Feels better, but slower.
-
+        rb.AddForce(movement * moveSpeed, ForceMode.Force); //this has some drag and inertia. not sure if it's better.
         //rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
     }
 

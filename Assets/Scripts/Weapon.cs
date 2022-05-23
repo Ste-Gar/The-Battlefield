@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] string enemyTag;
     int damage;
 
     private void Awake()
@@ -14,16 +13,11 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag(enemyTag)) return;
+        if (other.CompareTag(transform.root.tag)) return;
 
         Health target = other.GetComponent<Health>();
         if (target == null) return;
 
         target.TakeDamage(damage);
-    }
-
-    public void SetEnnemyTag(string tag)
-    {
-        enemyTag = tag;
     }
 }

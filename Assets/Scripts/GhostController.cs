@@ -66,7 +66,6 @@ public class GhostController : MonoBehaviour
     private void SwapTags(GameObject target)
     {
         target.tag = friendlyArmyTag;
-        target.GetComponentInChildren<Weapon>().SetEnnemyTag(enemyArmyTag);
     }
 
     private void PushBack()
