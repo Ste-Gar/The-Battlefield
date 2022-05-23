@@ -21,7 +21,7 @@ public class SoldierController : MonoBehaviour
 
     Transform target;
 
-    Vector2 movement;
+    Vector3 movement;
 
     private void Awake()
     {
@@ -36,20 +36,11 @@ public class SoldierController : MonoBehaviour
 
     private void Update()
     {
-        //FindNearestTarget();
-        //FindTarget();
-
-        movement = Vector2.zero;
+        movement = Vector3.zero;
 
         if (target == null) return;
 
-        //RaycastHit2D nearbyEnemy = Physics2D.CircleCast(transform.position, attackRange * 2, Vector2.up, 0, opposingArmyLayer);
-        //if (nearbyEnemy) 
-        //{
-        //    attacker.Attack();
-        //}
-
-        float distanceToTarget = Vector2.Distance(target.transform.position, transform.position);
+        float distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
         if (distanceToTarget > attackRange)
         {
             movement = (target.transform.position - transform.position).normalized * chaseSpeed;
@@ -68,19 +59,6 @@ public class SoldierController : MonoBehaviour
         mover.LookAt(target.position);
     }
 
-    //private void FindTarget()
-    //{
-    //    if (target != null) return;
-
-    //    RaycastHit2D hit = Physics2D.CircleCast(transform.position, circleCastRadius, Vector2.up, circleCastDistance, opposingArmyLayer);
-    //    if (!hit)
-    //    {
-    //        target = null;
-    //    }
-
-    //    target = hit.transform;
-    //}
-
     private void FindNearestTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(opponentTag);
@@ -88,7 +66,7 @@ public class SoldierController : MonoBehaviour
 
         foreach(GameObject enemy in enemies)
         {
-            float currentDistance = Vector2.Distance(transform.position, enemy.transform.position);
+            float currentDistance = Vector3.Distance(transform.position, enemy.transform.position);
             if (currentDistance < distance)
             {
                 distance = currentDistance;
