@@ -5,7 +5,7 @@ using UnityEngine;
 public class GhostController : MonoBehaviour
 {
     //[SerializeField] string playerArmyLayer = "PlayerArmy";
-    [SerializeField] string playerArmyTag = "Friendly";
+    [SerializeField] string friendlyArmyTag = "Friendly";
     [SerializeField] string enemyArmyTag = "Enemy";
     GameObject target;
     bool isPossessing = false;
@@ -32,17 +32,20 @@ public class GhostController : MonoBehaviour
         if (isPossessing) return;
         if (Input.GetButtonDown("Fire1"))
         {
-            Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 worldPos = new Vector3(mousePos.x, mousePos.y, 0);
-            RaycastHit2D hit = Physics2D.Raycast(mousePos, worldPos);
-            if (!hit) return;
-            if(hit.collider.tag == enemyArmyTag || hit.collider.tag == playerArmyTag)
+            //Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+            //Vector3 worldPos = new Vector3(mousePos.x, 0, mousePos.z);
+            Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+            bool hasHit = Physics.Raycast(ray, out hit, Mathf.Infinity);
+            if (!hasHit) return;
+            if(hit.collider.CompareTag(enemyArmyTag) || hit.collider.CompareTag(friendlyArmyTag))
             {
                 target = hit.collider.gameObject;
                 target.GetComponent<SoldierController>().enabled = false;
                 target.GetComponent<PlayerController>().enabled = true;
                 //target.gameObject.layer = LayerMask.NameToLayer(playerArmyLayer);
-                target.gameObject.tag = playerArmyTag;
+                target.tag = friendlyArmyTag;
 
                 isPossessing = true;
             }

@@ -7,11 +7,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Mover mover;
-    Camera cam;
+    Camera mainCam;
     Attacker attacker;
 
-    Vector2 mousePos;
-    Vector2 movement;
+    Vector3 mousePos;
+    Vector3 movement;
 
     public delegate void PossessedUnitDeath();
     public static event PossessedUnitDeath OnPossessedDeath;
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         mover = GetComponent<Mover>();
-        cam = Camera.main;
+        mainCam = Camera.main;
         attacker = GetComponent<Attacker>();
     }
 
@@ -31,9 +31,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        movement.y = 0;
+        movement.z = Input.GetAxisRaw("Vertical");
 
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.y = 0;
 
         if (Input.GetButtonDown("Fire1"))
         {

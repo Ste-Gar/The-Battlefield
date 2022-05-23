@@ -5,14 +5,15 @@ using UnityEngine;
 public class Attacker : MonoBehaviour
 {
     [SerializeField] int damage = 1;
+    public int Damage { get { return damage; } }
     [SerializeField] float cooldown = 0.5f;
     float currentCooldown;
 
-    Animator weaponAnimator;
+    Animator animator;
 
     private void Awake()
     {
-        weaponAnimator = GetComponentInChildren<Animator>();
+        animator = GetComponentInChildren<Animator>();
         currentCooldown = cooldown;
     }
 
@@ -25,19 +26,19 @@ public class Attacker : MonoBehaviour
     {
         if (currentCooldown >= cooldown)
         {
-            weaponAnimator.SetTrigger("Attack");
+            animator.SetTrigger("Attack");
             currentCooldown = 0;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //if (gameObject.layer == collision.gameObject.layer) return;
-        if (gameObject.CompareTag(collision.gameObject.tag)) return;
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    //if (gameObject.layer == collision.gameObject.layer) return;
+    //    if (gameObject.CompareTag(collision.gameObject.tag)) return;
 
-        Health target = collision.GetComponent<Health>();
-        if (target == null) return;
+    //    Health target = collision.GetComponent<Health>();
+    //    if (target == null) return;
 
-        target.TakeDamage(damage);
-    }
+    //    target.TakeDamage(damage);
+    //}
 }
