@@ -11,6 +11,7 @@ public class GhostController : MonoBehaviour
     [SerializeField] float pushBackRange = 3;
     [SerializeField] float pushBackPower = 10;
     [SerializeField] LayerMask layerMask;
+    [SerializeField] ParticleSystem shockwavePrefab;
 
     GameObject target;
     bool isPossessing = false;
@@ -70,6 +71,8 @@ public class GhostController : MonoBehaviour
 
     private void PushBack()
     {
+        Instantiate(shockwavePrefab, transform);
+
         Collider[] targets = Physics.OverlapSphere(transform.position, pushBackRange, layerMask);
 
         foreach(Collider target in targets)
