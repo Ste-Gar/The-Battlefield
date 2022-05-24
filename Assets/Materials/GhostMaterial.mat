@@ -61,9 +61,11 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.5
     - _DstBlend: 0
-    - _FresnelIntensity: 0.07
+    - _FlickerSpeed: 1
+    - _FresnelIntensity: 0.1
     - _FresnelPower: 1
     - _InternalSpread: 0.411
+    - _MinimumIntensity: 0.153
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SampleGI: 0
@@ -74,5 +76,5 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _FresnelColor: {r: 0, g: 1.2661004, b: 2, a: 0}
-    - _InteriorColor: {r: 0, g: 0.9214697, b: 2, a: 0}
+    - _InteriorColor: {r: 0, g: 1.2442093, b: 2.670157, a: 0}
   m_BuildTextureStacks: []
