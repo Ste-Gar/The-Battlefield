@@ -9,7 +9,6 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        Debug.Log(string.Format("{0} has taken {1} damage.", gameObject.name, damage));
         if (health <= 0)
         {
             Die();   
@@ -18,7 +17,6 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log(string.Format("{0} is dead.", gameObject.name));
         Destroy(gameObject);
     }
 }
