@@ -26,9 +26,12 @@ public class GameManager : MonoBehaviour
     TimeManager timeManager;
     [SerializeField] [Range(0.01f, 1)] float timescaleReduction = 0.1f;
 
-    private void Start()
+    private IEnumerator Start()
     {
         timeManager = FindObjectOfType<TimeManager>();
+        timeManager.PauseGame();
+        yield return StartCoroutine(FindObjectOfType<Fader>().FadeIn());
+        timeManager.ResumeGame();
     }
 
     private void OnEnable()

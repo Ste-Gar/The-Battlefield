@@ -16,4 +16,14 @@ public class TimeManager : MonoBehaviour
         Time.timeScale = 1;
         Time.fixedDeltaTime = 0.02f;
     }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+    }
 }

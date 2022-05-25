@@ -8,10 +8,17 @@ namespace Utilities.MainMenu
     public class MainMenu : MonoBehaviour
     {
         [SerializeField] string firstScene;
+        LevelLoader levelLoader;
+
+        private void Awake()
+        {
+            levelLoader = FindObjectOfType<LevelLoader>();
+        }
 
         public void PlayGame()
         {
-            SceneManager.LoadScene(firstScene);
+            levelLoader.LoadScene(firstScene);
+            this.enabled = false;
         }
 
         public void QuitGame()
