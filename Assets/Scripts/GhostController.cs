@@ -6,13 +6,14 @@ public class GhostController : MonoBehaviour
 {
     [SerializeField] string friendlyArmyTag = "Friendly";
     [SerializeField] string enemyArmyTag = "Enemy";
-    [SerializeField] [Range(0.1f, 1)] float timescaleReduction = 0.5f;
+    [SerializeField] [Range(0.01f, 1)] float timescaleReduction = 0.1f;
 
     [SerializeField] float pushBackRange = 3;
     [SerializeField] float pushBackPower = 10;
     [SerializeField] LayerMask layerMask;
     [SerializeField] ParticleSystem shockwavePrefab;
 
+    TimeManager timeManager;
     GameObject target;
     bool isPossessing = false;
 
@@ -21,6 +22,7 @@ public class GhostController : MonoBehaviour
     private void Awake()
     {
         mainCam = Camera.main;
+        timeManager = FindObjectOfType<TimeManager>();
     }
 
     private void OnEnable()
@@ -52,7 +54,7 @@ public class GhostController : MonoBehaviour
 
                 isPossessing = true;
 
-                Time.timeScale = 1;
+                timeManager.ResetTimescale();
             }
         }
     }
@@ -92,6 +94,6 @@ public class GhostController : MonoBehaviour
     private void DetachFromUnit()
     {
         isPossessing = false;
-        Time.timeScale = timescaleReduction;
+        timeManager.SlowTime(timescaleReduction);
     }
 }

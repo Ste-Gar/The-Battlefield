@@ -6,6 +6,8 @@ public class Weapon : MonoBehaviour
 {
     int damage;
 
+    [SerializeField] GameObject rootObject;
+
     private void Awake()
     {
         damage = GetComponentInParent<Attacker>().Damage;
@@ -13,7 +15,7 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(transform.root.tag)) return;
+        if (other.CompareTag(rootObject.tag)) return;
 
         Health target = other.GetComponent<Health>();
         if (target == null) return;

@@ -30,15 +30,4 @@ public class Attacker : MonoBehaviour
             currentCooldown = 0;
         }
     }
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    //if (gameObject.layer == collision.gameObject.layer) return;
-    //    if (gameObject.CompareTag(collision.gameObject.tag)) return;
-
-    //    Health target = collision.GetComponent<Health>();
-    //    if (target == null) return;
-
-    //    target.TakeDamage(damage);
-    //}
 }
