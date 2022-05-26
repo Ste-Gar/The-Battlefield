@@ -10,11 +10,10 @@ public class SoldierController : MonoBehaviour
     [SerializeField] float attackRange = 1;
 
     [Header("Find Target Parameters")]
-    //[SerializeField] LayerMask opposingArmyLayer;
-    //[SerializeField] float circleCastRadius = 5;
-    //[SerializeField] float circleCastDistance = 5;
     [SerializeField] string opponentTag;
     [SerializeField] float findTargetDelay = 0.2f;
+    [Tooltip("Adds a delay for searching a target at the start of the game")]
+    [SerializeField] float startDelay = 1;
 
     Mover mover;
     Attacker attacker;
@@ -31,7 +30,7 @@ public class SoldierController : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("FindNearestTarget", 0, findTargetDelay);
+        InvokeRepeating(nameof(FindNearestTarget), startDelay, findTargetDelay);
     }
 
     private void Update()
