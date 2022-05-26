@@ -55,6 +55,8 @@ public class GhostController : MonoBehaviour
                 isPossessing = true;
 
                 timeManager.ResetTimescale();
+
+                GameManager.Instance.disableTutorial();
             }
         }
     }

@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player;
     TimeManager timeManager;
     [SerializeField] [Range(0.01f, 1)] float timescaleReduction = 0.1f;
+    [SerializeField] GameObject tutorialPanel;
 
     private IEnumerator Start()
     {
@@ -49,5 +50,12 @@ public class GameManager : MonoBehaviour
         player.GetComponent<GhostController>().enabled = true;
         player.transform.GetChild(0).gameObject.SetActive(true);
         timeManager.SlowTime(timescaleReduction);
+        tutorialPanel.SetActive(true);
+    }
+
+    public void disableTutorial()
+    {
+        if (tutorialPanel == null) return;
+        Destroy(tutorialPanel);
     }
 }
