@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,24 +26,30 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player;
     TimeManager timeManager;
     [SerializeField] [Range(0.01f, 1)] float timescaleReduction = 0.1f;
+
+    [Header("UI")]
     [SerializeField] GameObject tutorialPanel;
+    [SerializeField] GameObject gameOverPanel;
+    [SerializeField] Fader fader;
 
     private IEnumerator Start()
     {
         timeManager = FindObjectOfType<TimeManager>();
-        timeManager.PauseGame();
-        yield return StartCoroutine(FindObjectOfType<Fader>().FadeIn());
-        timeManager.ResumeGame();
+        //timeManager.PauseGame();
+        yield return StartCoroutine(fader.FadeIn());
+        //timeManager.ResumeGame();
     }
 
     private void OnEnable()
     {
         Commander.OnDeath += StartGame;
+        GhostController.OnInsufficientEnergy += GameOver;
     }
 
     private void OnDisable()
     {
         Commander.OnDeath -= StartGame;
+        GhostController.OnInsufficientEnergy -= GameOver;
     }
 
     void StartGame()
@@ -58,4 +65,25 @@ public class GameManager : MonoBehaviour
         if (tutorialPanel == null) return;
         Destroy(tutorialPanel);
     }
+
+    private void GameOver()
+    {
+        player.SetActive(false);
+        StartCoroutine(fader.FadeOut());
+        gameOverPanel.SetActive(true);
+        timeManager.ResetTimescale();
+    }
+
+    #region UI events
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+    #endregion
 }

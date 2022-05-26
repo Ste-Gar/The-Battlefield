@@ -13,16 +13,30 @@ public class GhostController : MonoBehaviour
     [SerializeField] LayerMask layerMask;
     [SerializeField] ParticleSystem shockwavePrefab;
 
+    [SerializeField] int maxEnergy = 10;
+    [SerializeField] int possessionCost = 3;
+    [SerializeField] int energyGain = 1;
+    int currentEnergy;
+    public int CurrentEnergy { get { return currentEnergy; } }
+
     TimeManager timeManager;
     GameObject target;
     bool isPossessing = false;
 
     Camera mainCam;
 
+    public delegate void UpdateEnergy(int amount);
+    public static UpdateEnergy OnUpdateEnergy;
+
+    public delegate void InsufficientEnergy();
+    public static InsufficientEnergy OnInsufficientEnergy;
+
     private void Awake()
     {
         mainCam = Camera.main;
         timeManager = FindObjectOfType<TimeManager>();
+
+        currentEnergy = maxEnergy;
     }
 
     private void OnEnable()
@@ -51,6 +65,7 @@ public class GhostController : MonoBehaviour
                 TakeControl(target);
                 SwapTags(target);
                 PushBack();
+                RemoveEnergy();
 
                 isPossessing = true;
 
@@ -97,5 +112,23 @@ public class GhostController : MonoBehaviour
     {
         isPossessing = false;
         timeManager.SlowTime(timescaleReduction);
+
+        if (currentEnergy < possessionCost)
+        {
+            OnInsufficientEnergy.Invoke();
+            return;
+        }
+    }
+
+    public void AddEnergy()
+    {
+        currentEnergy = Mathf.Min(currentEnergy += energyGain, maxEnergy);
+        OnUpdateEnergy.Invoke(currentEnergy);
+    }
+
+    private void RemoveEnergy()
+    {
+        currentEnergy -= possessionCost;
+        OnUpdateEnergy.Invoke(currentEnergy);
     }
 }

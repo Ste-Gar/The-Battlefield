@@ -21,5 +21,8 @@ public class Weapon : MonoBehaviour
         if (target == null) return;
 
         target.TakeDamage(damage);
+
+        if (!rootObject.GetComponent<PlayerController>().isActiveAndEnabled) return;
+        FindObjectOfType<GhostController>().AddEnergy();
     }
 }
