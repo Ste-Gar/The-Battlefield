@@ -25,6 +25,9 @@ public class GhostController : MonoBehaviour
 
     Camera mainCam;
 
+    public delegate void UpdateEnergy(int amount);
+    public static UpdateEnergy OnUpdateEnergy;
+
     public delegate void InsufficientEnergy();
     public static InsufficientEnergy OnInsufficientEnergy;
 
@@ -120,10 +123,12 @@ public class GhostController : MonoBehaviour
     public void AddEnergy()
     {
         currentEnergy = Mathf.Min(currentEnergy += energyGain, maxEnergy);
+        OnUpdateEnergy.Invoke(currentEnergy);
     }
 
     private void RemoveEnergy()
     {
         currentEnergy -= possessionCost;
+        OnUpdateEnergy.Invoke(currentEnergy);
     }
 }
