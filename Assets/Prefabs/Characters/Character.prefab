@@ -65,6 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  bloodFXPrefab: {fileID: 5380963196913733070, guid: a24ebd2af3c41d044afcbda8367ea261, type: 3}
 --- !u!54 &1621797694490457528
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -123,6 +124,7 @@ MonoBehaviour:
   attackRange: 1.5
   opponentTag: 
   findTargetDelay: 0.2
+  startDelay: 1
 --- !u!136 &4661966775722717976
 CapsuleCollider:
   m_ObjectHideFlags: 0
