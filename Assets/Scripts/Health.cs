@@ -6,6 +6,8 @@ public class Health : MonoBehaviour
 {
     [SerializeField] int health = 1;
 
+    [SerializeField] GameObject bloodFXPrefab;
+
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -17,6 +19,7 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
+        Instantiate(bloodFXPrefab, transform.position, Quaternion.Euler(0, transform.eulerAngles.y + 180, 0));
         Destroy(gameObject);
     }
 }

@@ -2004,6 +2004,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost
       objectReference: {fileID: 0}
+    - target: {fileID: 1475686695690756836, guid: d5f2252f19ee0bd4bb75025c637e8ee7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1475686695690756838, guid: d5f2252f19ee0bd4bb75025c637e8ee7, type: 3}
       propertyPath: m_RootOrder
       value: 4
