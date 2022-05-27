@@ -1226,10 +1226,10 @@ RectTransform:
   m_Father: {fileID: 1208423234}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 127.8, y: 0}
-  m_SizeDelta: {x: 65.9912, y: 65.9912}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 675.8, y: 0}
+  m_SizeDelta: {x: 65.99121, y: 65.9912}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &696627804
 MonoBehaviour:
@@ -1523,10 +1523,10 @@ RectTransform:
   m_Father: {fileID: 1208423234}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -95.051, y: 15.9}
-  m_SizeDelta: {x: -802.4373, y: -113.28}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 452.949, y: 15.9}
+  m_SizeDelta: {x: 293.56268, y: 32.72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &807193119
 MonoBehaviour:
@@ -2168,10 +2168,10 @@ RectTransform:
   m_Father: {fileID: 1208423234}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -500, y: 0}
-  m_SizeDelta: {x: 65.9912, y: 65.9912}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 48, y: 0}
+  m_SizeDelta: {x: 65.99121, y: 65.9912}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &930390690
 MonoBehaviour:
@@ -2630,7 +2630,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 183}
-  m_SizeDelta: {x: 1096.3435, y: 179.27032}
+  m_SizeDelta: {x: 907.2175, y: 146.0455}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1208423235
 MonoBehaviour:
@@ -3456,10 +3456,10 @@ RectTransform:
   m_Father: {fileID: 1208423234}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -425, y: 0}
-  m_SizeDelta: {x: 65.9912, y: 65.9912}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 123, y: 0}
+  m_SizeDelta: {x: 65.99121, y: 65.9912}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1643036836
 MonoBehaviour:
@@ -3608,10 +3608,10 @@ RectTransform:
   m_Father: {fileID: 1208423234}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -350, y: 0}
-  m_SizeDelta: {x: 65.9912, y: 65.9912}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 198, y: 0}
+  m_SizeDelta: {x: 65.99121, y: 65.9912}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1711126823
 MonoBehaviour:
@@ -4519,10 +4519,10 @@ RectTransform:
   m_Father: {fileID: 1208423234}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -275, y: 0}
-  m_SizeDelta: {x: 65.9912, y: 65.9912}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 273, y: 0}
+  m_SizeDelta: {x: 65.99121, y: 65.9912}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1934724006
 MonoBehaviour:
@@ -4709,10 +4709,10 @@ RectTransform:
   m_Father: {fileID: 1208423234}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 261.75, y: 15.9}
-  m_SizeDelta: {x: -894.428, y: -113.28}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 809.75, y: 15.9}
+  m_SizeDelta: {x: 201.57202, y: 32.72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2043543295
 MonoBehaviour:
@@ -4734,9 +4734,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'action
-
-'
+  m_text: attack
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd585727364e8e844831f05cbfc1c065, type: 2}
   m_sharedMaterial: {fileID: -5281240953814696478, guid: cd585727364e8e844831f05cbfc1c065, type: 2}
