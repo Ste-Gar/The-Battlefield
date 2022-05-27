@@ -22,6 +22,14 @@ public class SoldierController : MonoBehaviour
 
     Vector3 movement;
 
+    public delegate void Death(GameObject thisObj);
+    public static Death onDeath;
+
+    private void OnDisable()
+    {
+        onDeath?.Invoke(this.gameObject);
+    }
+
     private void Awake()
     {
         mover = GetComponent<Mover>();
