@@ -8,14 +8,17 @@ public class GhostController : MonoBehaviour
     [SerializeField] string enemyArmyTag = "Enemy";
     [SerializeField] [Range(0.01f, 1)] float timescaleReduction = 0.1f;
 
+    [Header("Shockwave configuration")]
     [SerializeField] float pushBackRange = 3;
     [SerializeField] float pushBackPower = 10;
     [SerializeField] LayerMask layerMask;
     [SerializeField] ParticleSystem shockwavePrefab;
 
-    [SerializeField] int maxEnergy = 10;
+
+    [Header("Energy configuration")]
     [SerializeField] int possessionCost = 3;
     [SerializeField] int energyGain = 1;
+    int maxEnergy = 10;
     int currentEnergy;
     public int CurrentEnergy { get { return currentEnergy; } }
 
@@ -113,7 +116,7 @@ public class GhostController : MonoBehaviour
         isPossessing = false;
         timeManager.SlowTime(timescaleReduction);
 
-        if (currentEnergy < possessionCost)
+        if (currentEnergy <= 0)
         {
             OnInsufficientEnergy.Invoke();
             return;
@@ -122,13 +125,13 @@ public class GhostController : MonoBehaviour
 
     public void AddEnergy()
     {
-        currentEnergy = Mathf.Min(currentEnergy += energyGain, maxEnergy);
+        currentEnergy = Mathf.Min(currentEnergy + energyGain, maxEnergy);
         OnUpdateEnergy.Invoke(currentEnergy);
     }
 
     private void RemoveEnergy()
     {
-        currentEnergy -= possessionCost;
+        currentEnergy = Mathf.Max(currentEnergy - possessionCost, 0);
         OnUpdateEnergy.Invoke(currentEnergy);
     }
 }
