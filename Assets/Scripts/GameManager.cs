@@ -30,26 +30,32 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] GameObject tutorialPanel;
     [SerializeField] GameObject gameOverPanel;
+    [SerializeField] GameObject victoryPanel;
     [SerializeField] Fader fader;
+
+    List<GameObject> enemyArmy;
 
     private IEnumerator Start()
     {
         timeManager = FindObjectOfType<TimeManager>();
-        //timeManager.PauseGame();
+
         yield return StartCoroutine(fader.FadeIn());
-        //timeManager.ResumeGame();
+
+        enemyArmy = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
     }
 
     private void OnEnable()
     {
         Commander.OnDeath += StartGame;
         GhostController.OnInsufficientEnergy += GameOver;
+        SoldierController.onDeath += RemoveEnemy;
     }
 
     private void OnDisable()
     {
         Commander.OnDeath -= StartGame;
         GhostController.OnInsufficientEnergy -= GameOver;
+        SoldierController.onDeath -= RemoveEnemy;
     }
 
     void StartGame()
@@ -60,7 +66,7 @@ public class GameManager : MonoBehaviour
         tutorialPanel.SetActive(true);
     }
 
-    public void disableTutorial()
+    public void DisableTutorial()
     {
         if (tutorialPanel == null) return;
         Destroy(tutorialPanel);
@@ -74,8 +80,24 @@ public class GameManager : MonoBehaviour
         timeManager.ResetTimescale();
     }
 
-    #region UI events
+    private void RemoveEnemy(GameObject unit)
+    {
+        if (unit == null) return;
+        enemyArmy.Remove(unit);
 
+        if (enemyArmy.Count <= 0)
+        {
+            Victory();
+        }
+    }
+
+    private void Victory()
+    {
+        victoryPanel.SetActive(true);
+        timeManager.ResetTimescale();
+    }
+
+    #region UI events
     public void PlayAgain()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

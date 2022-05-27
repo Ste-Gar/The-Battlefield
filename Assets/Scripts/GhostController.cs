@@ -74,7 +74,7 @@ public class GhostController : MonoBehaviour
 
                 timeManager.ResetTimescale();
 
-                GameManager.Instance.disableTutorial();
+                GameManager.Instance.DisableTutorial();
             }
         }
     }
