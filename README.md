@@ -1,4 +1,4 @@
-# The-Battlefield
+# The Battlefield
 This is a Unity game I developed for the GameDev.tv 2022 GameJam.
 It was developed in 10 days; all of the code is written by myself, while most assets (models, textures, animations, audio, UI) are CC0.
 
