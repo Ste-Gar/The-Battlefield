@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator Start()
     {
         timeManager = FindObjectOfType<TimeManager>();
+        timeManager.ResetTimescale();
 
         yield return StartCoroutine(fader.FadeIn());
 
@@ -77,7 +78,7 @@ public class GameManager : MonoBehaviour
         player.SetActive(false);
         StartCoroutine(fader.FadeOut());
         gameOverPanel.SetActive(true);
-        timeManager.ResetTimescale();
+        timeManager.PauseGame();
     }
 
     private void RemoveEnemy(GameObject unit)
@@ -94,7 +95,7 @@ public class GameManager : MonoBehaviour
     private void Victory()
     {
         victoryPanel.SetActive(true);
-        timeManager.ResetTimescale();
+        timeManager.PauseGame();
     }
 
     #region UI events
