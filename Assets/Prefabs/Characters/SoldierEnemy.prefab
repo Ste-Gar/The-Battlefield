@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: rootObject
       value: 
       objectReference: {fileID: 5718199396849337175}
+    - target: {fileID: 5192339344781639017, guid: d69669ed744ec5e48b85fbb8838d2d91, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.84353465
+      objectReference: {fileID: 0}
     - target: {fileID: 5672589826359567670, guid: d69669ed744ec5e48b85fbb8838d2d91, type: 3}
       propertyPath: m_RootOrder
       value: 0
