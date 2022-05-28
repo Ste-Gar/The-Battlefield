@@ -21,5 +21,7 @@ public class EnemyWaveTrigger : MonoBehaviour
         {
             enemy.enabled = true;
         }
+
+        gameObject.SetActive(false);
     }
 }
