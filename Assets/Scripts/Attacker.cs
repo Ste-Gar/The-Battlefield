@@ -28,6 +28,9 @@ public class Attacker : MonoBehaviour
         {
             animator.SetTrigger("Attack");
             currentCooldown = 0;
+
+            if (gameObject.GetComponent<PlayerController>().isActiveAndEnabled)
+                GetComponent<SoundManager>().PlaySound("Swing");
         }
     }
 }

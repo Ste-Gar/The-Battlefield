@@ -45,7 +45,8 @@ public class SoldierController : MonoBehaviour
     {
         movement = Vector3.zero;
 
-        if (target == null) return;
+        if (target == null || !target.CompareTag(opponentTag)) return;
+        //When a unit dies it isn't destroyed instantly. To avoid units attacking the thin air, we check the target's tag, as it is changed to "Untagged" instantly at death.
 
         float distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
         if (distanceToTarget > attackRange)

@@ -22,7 +22,9 @@ public class Weapon : MonoBehaviour
 
         target.TakeDamage(damage);
 
-        if (!rootObject.GetComponent<PlayerController>().isActiveAndEnabled) return;
+        PlayerController PC = rootObject.GetComponent<PlayerController>();
+        if (!PC.isActiveAndEnabled) return;
+        PC.gameObject.GetComponent<SoundManager>().PlaySound("Kill");
         FindObjectOfType<GhostController>().AddEnergy();
     }
 }
