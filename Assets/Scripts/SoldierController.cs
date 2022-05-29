@@ -38,7 +38,7 @@ public class SoldierController : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating(nameof(FindNearestTarget), startDelay, findTargetDelay);
+        InvokeRepeating(nameof(FindNearestTarget), Random.Range(startDelay - 0.1f,startDelay + 0.1f), findTargetDelay);
     }
 
     private void Update()
