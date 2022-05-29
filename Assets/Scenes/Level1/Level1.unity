@@ -22673,7 +22673,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1120627479}
   - component: {fileID: 1120627478}
-  - component: {fileID: 1120627477}
   - component: {fileID: 1120627476}
   - component: {fileID: 1120627475}
   m_Layer: 0
@@ -22750,14 +22749,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &1120627477
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120627474}
-  m_Enabled: 1
 --- !u!20 &1120627478
 Camera:
   m_ObjectHideFlags: 0
@@ -39016,6 +39007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2002397072}
   - component: {fileID: 2002397071}
+  - component: {fileID: 2002397073}
   m_Layer: 0
   m_Name: CameraPosition
   m_TagString: Untagged
@@ -39052,6 +39044,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &2002397073
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002397070}
+  m_Enabled: 1
 --- !u!4 &2007194083 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3165757369036293996, guid: 6316bf0e2bc41c147a4d8a90a9b185e1, type: 3}

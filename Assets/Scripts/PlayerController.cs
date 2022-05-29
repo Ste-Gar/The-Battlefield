@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,9 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Attacker))]
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] List<SoundClip> soundClips;
+
     Mover mover;
     Camera mainCam;
     Attacker attacker;
+    AudioSource audioSource;
 
     Vector3 mousePos;
     Vector3 movement;
@@ -21,6 +23,7 @@ public class PlayerController : MonoBehaviour
         mover = GetComponent<Mover>();
         mainCam = Camera.main;
         attacker = GetComponent<Attacker>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnDisable()
@@ -47,5 +50,18 @@ public class PlayerController : MonoBehaviour
     {
         mover.Move(movement);
         mover.LookAt(mousePos);
+    }
+
+    public void PlaySound(string clipName)
+    {
+        if (audioSource.isPlaying) return;
+
+        SoundClip soundClip = soundClips.Find(s => s.name == clipName);
+
+        audioSource.clip = soundClip.clip;
+        audioSource.volume = soundClip.volume;
+        audioSource.loop =  soundClip.loop;
+
+        audioSource.Play();
     }
 }
