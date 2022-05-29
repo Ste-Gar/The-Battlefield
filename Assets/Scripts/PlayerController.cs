@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         OnPossessedDeath?.Invoke();
+        GetComponent<SoundManager>().PlaySound("Shockwave");
     }
 
     void Update()

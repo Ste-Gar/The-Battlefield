@@ -9,5 +9,6 @@ public class SoundClip
     public AudioClip clip;
     public bool loop = false;
     [Range(0, 1)] public float volume = 0.5f;
+    [Range(-3, 3)]public float pitch = 1;
     public float delay = 0;
 }

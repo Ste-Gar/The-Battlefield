@@ -10,7 +10,6 @@ public class MusicManager : MonoBehaviour
 
     SoundManager soundManager;
 
-    [SerializeField] float StartFadeInDuration = 1;
     [SerializeField] float PlayFadeOutDuration = 1;
     [SerializeField] float GameFadeInDuration = 5;
 
@@ -28,12 +27,6 @@ public class MusicManager : MonoBehaviour
             soundManager = GetComponent<SoundManager>();
         }
     }
-
-    //private void Start()
-    //{
-    //    //StartCoroutine(soundManager.FadeInClip("MenuMusic", StartFadeInDuration));
-    //    soundManager.PlaySound("MenuMusic");
-    //}
 
     public void PlayGameMusic()
     {
