@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 781101510434799766}
   - component: {fileID: 4661966775722717976}
   - component: {fileID: 67066190754469143}
+  - component: {fileID: 7711576431293491273}
   m_Layer: 7
   m_Name: Character
   m_TagString: Enemy
@@ -109,11 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8108dadb78f400242b5da0891d5f913f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundClips:
-  - name: Kill
-    clip: {fileID: 8300000, guid: 9098230b3c591e94bb5476c1f655582d, type: 3}
-    loop: 0
-    volume: 0.5
 --- !u!114 &781101510434799766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,3 +237,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7711576431293491273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9073493267793881107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 426db70f139071e44a269c9565445e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundClips:
+  - name: Kill
+    clip: {fileID: 8300000, guid: 9098230b3c591e94bb5476c1f655582d, type: 3}
+    loop: 0
+    volume: 0.5

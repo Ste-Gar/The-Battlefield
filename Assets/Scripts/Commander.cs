@@ -10,5 +10,6 @@ public class Commander : MonoBehaviour
     private void OnDisable()
     {
         OnDeath.Invoke();
+        GetComponent<SoundManager>().PlaySound("Kill");
     }
 }

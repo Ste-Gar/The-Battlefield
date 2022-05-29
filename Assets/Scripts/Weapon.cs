@@ -24,7 +24,7 @@ public class Weapon : MonoBehaviour
 
         PlayerController PC = rootObject.GetComponent<PlayerController>();
         if (!PC.isActiveAndEnabled) return;
-        PC.PlaySound("Kill");
+        PC.gameObject.GetComponent<SoundManager>().PlaySound("Kill");
         FindObjectOfType<GhostController>().AddEnergy();
     }
 }
