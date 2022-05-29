@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     Mover mover;
     Camera mainCam;
     Attacker attacker;
+    SoundManager soundManager;
 
     Vector3 mousePos;
     Vector3 movement;
@@ -20,11 +21,12 @@ public class PlayerController : MonoBehaviour
         mover = GetComponent<Mover>();
         mainCam = Camera.main;
         attacker = GetComponent<Attacker>();
+        soundManager = GetComponent<SoundManager>();
     }
 
     private void OnDisable()
     {
-        OnPossessedDeath.Invoke();
+        OnPossessedDeath?.Invoke();
     }
 
     void Update()

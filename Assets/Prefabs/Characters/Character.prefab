@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  cooldown: 0.5
+  cooldown: 0.833
 --- !u!114 &5667266663777808279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,3 +254,9 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 9098230b3c591e94bb5476c1f655582d, type: 3}
     loop: 0
     volume: 0.5
+    delay: 0
+  - name: Swing
+    clip: {fileID: 8300000, guid: 9753bd99c89f2b7408f4bf3b05350c24, type: 3}
+    loop: 0
+    volume: 0.5
+    delay: 0
