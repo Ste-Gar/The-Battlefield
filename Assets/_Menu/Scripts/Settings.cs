@@ -53,6 +53,16 @@ namespace Utilities.MainMenu
             audioMixer.SetFloat("MasterVolume", volume);
         }
 
+        public void SetMusicVolume(float volume)
+        {
+            audioMixer.SetFloat("MusicVolume", volume);
+        }
+
+        public void SetSFXVolume(float volume)
+        {
+            audioMixer.SetFloat("SFXVolume", volume);
+        }
+
         public void SetFullscreen(bool isFullscreen)
         {
             Screen.fullScreen = isFullscreen;
