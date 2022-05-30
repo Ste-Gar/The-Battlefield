@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
 
             foreach (AudioSource a in audioSources)
             {
-                if (a != null) a.Pause();
+                if (a != null && !a.GetComponent<MusicManager>()) a.Pause();
             }
         }
         else
