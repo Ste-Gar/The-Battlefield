@@ -35,6 +35,10 @@ public class GameManager : MonoBehaviour
 
     List<GameObject> enemyArmy;
 
+    bool isGamePaused = false;
+    [SerializeField] GameObject pausePanel;
+    AudioSource[] audioSources;
+
     private IEnumerator Start()
     {
         timeManager = FindObjectOfType<TimeManager>();
@@ -59,6 +63,45 @@ public class GameManager : MonoBehaviour
         SoldierController.onDeath -= RemoveEnemy;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
+        }
+    }
+
+    public void PauseGame()
+    {
+        if(audioSources == null)
+        {
+            audioSources = FindObjectsOfType<AudioSource>();
+        }
+
+        if (!isGamePaused)
+        {
+            timeManager.PauseTime();
+            isGamePaused = true;
+            pausePanel.SetActive(true);
+
+            foreach (AudioSource a in audioSources)
+            {
+                if (a != null) a.Pause();
+            }
+        }
+        else
+        {
+            timeManager.ResumeTime();
+            pausePanel.SetActive(false);
+            isGamePaused = false;
+
+            foreach (AudioSource a in audioSources)
+            {
+                if (a != null) a.UnPause();
+            }
+        }
+    }
+
     void StartGame()
     {
         player.GetComponent<GhostController>().enabled = true;
@@ -78,12 +121,12 @@ public class GameManager : MonoBehaviour
         player.SetActive(false);
         StartCoroutine(fader.FadeOut());
         gameOverPanel.SetActive(true);
-        timeManager.PauseGame();
+        timeManager.PauseTime();
     }
 
     private void RemoveEnemy(GameObject unit)
     {
-        if (unit == null) return;
+        if (unit == null || enemyArmy == null) return;
         enemyArmy.Remove(unit);
 
         if (enemyArmy.Count <= 0)
@@ -95,7 +138,7 @@ public class GameManager : MonoBehaviour
     private void Victory()
     {
         victoryPanel.SetActive(true);
-        timeManager.PauseGame();
+        timeManager.PauseTime();
     }
 
     #region UI events

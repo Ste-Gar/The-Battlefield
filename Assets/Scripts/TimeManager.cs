@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
+    float gameTimescale;
 
     public void SlowTime(float timescaleReduction)
     {
@@ -17,13 +18,16 @@ public class TimeManager : MonoBehaviour
         Time.fixedDeltaTime = 0.02f;
     }
 
-    public void PauseGame()
+    public void PauseTime()
     {
+        gameTimescale = Time.timeScale;
+
         Time.timeScale = 0;
     }
 
-    public void ResumeGame()
+    public void ResumeTime()
     {
-        Time.timeScale = 1;
+        Time.timeScale = gameTimescale;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
 }
