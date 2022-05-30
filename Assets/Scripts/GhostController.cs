@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GhostController : MonoBehaviour
 {
@@ -55,8 +56,9 @@ public class GhostController : MonoBehaviour
     private void Update()
     {
         if (isPossessing) return;
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !EventSystem.current.IsPointerOverGameObject())
         {
+
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
